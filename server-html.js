@@ -7,7 +7,7 @@ let server = http.createServer((req,res) => {
     console.log(req.connection.remoteAddress);
     console.log(req.url);
     let reqrl = url.parse(req.url);
-
+    console.log(reqrl.query)
     // console.log(reqrl);
     console.log(reqrl.path);
     if(reqrl.pathname=='/'){   
