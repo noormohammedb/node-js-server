@@ -6,16 +6,17 @@ const port = 3000;
 let server = http.createServer((req,res) => {
     console.log(req.connection.remoteAddress);
     console.log(req.url);
-    let req_url = url.parse(req.url);
-    // console.log(req_url);
-    console.log(req_url.path);
-    if(req_url.pathname=='/'){   
+    let reqrl = url.parse(req.url);
+
+    // console.log(reqrl);
+    console.log(reqrl.path);
+    if(reqrl.pathname=='/'){   
         fs.readFile('index.html',(error,data) => {
             res.writeHead(200,{'content-type':'text/html'});
             res.write(data);
             res.end()
         })
-    }else if(req_url.pathname=="/login"){
+    }else if(reqrl.pathname=="/login"){
         fs.readFile('login.html',(error,data) => {
             res.writeHead(200,{'content-type':'text/html'});
             res.write(data);
