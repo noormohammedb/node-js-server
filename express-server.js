@@ -1,11 +1,9 @@
 const express = require('express');
-const fs = require('fs');
-
 const app = express();
 const port = 3000;
 
 app.get('/',(req,res) => {
-    res.send("Hello World");
+    res.sendFile(__dirname+"/index.html");
 })
 
 app.get('/login',(req,res) => {
@@ -13,5 +11,7 @@ app.get('/login',(req,res) => {
 })
 
 app.listen(port,()=>{
+    console.log(__dirname);
+    console.log(__filename);
     console.log('server started at port : ' + port);
 })
