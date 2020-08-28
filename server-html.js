@@ -6,8 +6,9 @@ const port = 3000;
 let server = http.createServer((req,res) => {
     console.log(req.connection.remoteAddress);
     console.log(req.url);
-    let reqrl = url.parse(req.url);
-    console.log(reqrl.query)
+    let reqrl = url.parse(req.url,true);
+    console.log(reqrl.query.who)
+    console.log(reqrl.query.message)
     // console.log(reqrl);
     console.log(reqrl.path);
     if(reqrl.pathname=='/'){   
