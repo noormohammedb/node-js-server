@@ -1,5 +1,6 @@
 const http = require("http");
 const fs = require("fs");
+
 const port = 3000;
 http.createServer((req,res)=>{
     let page = fs.readFile("index.html",(err,data)=>{
