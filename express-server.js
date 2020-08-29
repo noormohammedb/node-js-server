@@ -1,18 +1,19 @@
 const express = require('express');
 const path = require('path');
+
 const app = express();
 const port = 3000;
 
 app.get('/',(req,res) => {
-    res.sendFile(path.join("/index.html"));
-})
-
+    console.log(req.connection.remoteAddress);
+    res.sendFile(path.join(__dirname,'index.html'));
+});
 app.get('/login',(req,res) => {
-    res.send("login");
-})
+    console.log(req.connection.remoteAddress);
+    // console.log(req.);
+    res.sendFile(path.join(__dirname,'login.html'));
+});
 
-app.listen(port,()=>{
-    console.log(__dirname);
-    console.log(__filename);
-    console.log('server started at port : ' + port);
-})
+app.listen(port,() => {
+    console.log("server listening at port : " + port);
+});
