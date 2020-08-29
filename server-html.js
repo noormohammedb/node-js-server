@@ -16,6 +16,8 @@ let server = http.createServer((req,res) => {
         });
     }else if(reqrl.pathname == '/login'){
         fs.readFile('login.html',(error,data) => {
+            console.log(reqrl.query.who)
+            console.log(reqrl.query.message)
             res.writeHead(200,{'content-type':'text/html'});
             res.write(data);
             res.end();
