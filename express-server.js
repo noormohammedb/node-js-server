@@ -9,13 +9,23 @@ app.use((req,res,next) => {
     next();
 })
 
-app.get('/',(req,res) => {
+app.get('/',(req,res,next) => {
     res.sendFile(path.join(__dirname,'index.html'));
-});
-app.post('/',(req,res) => {
-    res.sendFile(path.join(__dirname,'login.html'));
+    next();
 });
 
+app.post('/',(req,res,next) => {
+    res.sendFile(path.join(__dirname,'login.html'));
+    next();
+});
+
+
+app.use((req,res) => {
+    console.log("request completed");
+});
+
+
 app.listen(port,() => {
+
     console.log("server listening at port : " + port);
 });
