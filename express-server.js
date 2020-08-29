@@ -12,7 +12,7 @@ app.use((req,res,next) => {
 app.get('/',(req,res) => {
     res.sendFile(path.join(__dirname,'index.html'));
 });
-app.get('/login',(req,res) => {
+app.post('/',(req,res) => {
     res.sendFile(path.join(__dirname,'login.html'));
 });
 
