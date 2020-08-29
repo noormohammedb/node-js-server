@@ -7,19 +7,18 @@ const port = 3000;
 
 app.use((bodyParser.urlencoded({extended:true})),(req,res,next) => {
     console.log('Requesting from ' + req.connection.remoteAddress + ' For : ' + req.url);
+    res.set({'content-type':'text/html'});
     next();
 })
 
 app.get('/',(req,res,next) => {
-    // res.set('Content-Type', 'text/plain');
-    // res.status(200);
-    res.sendFile(path.join(__dirname,'index.html'));
+    res.status(200).sendFile(path.join(__dirname,'index.html'));
     next();
 });
 
 app.get('/login',(req,res,next) => {
     console.log('incoming data\nwho : ' + req.query.who + '\nmessage : ' + req.query.message);
-    res.sendFile(path.join(__dirname,'login.html'));
+    res.status(200).sendFile(path.join(__dirname,'login.html'));
     next();
 });
 
