@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
 
-app.use((bodyParser.urlencoded({extended:false})),(req,res,next) => {
+app.use((bodyParser.urlencoded({extended:true})),(req,res,next) => {
     console.log('Requesting from ' + req.connection.remoteAddress + ' For : ' + req.url);
     next();
 })
@@ -17,8 +17,8 @@ app.get('/',(req,res,next) => {
     next();
 });
 
-app.post('/',(req,res,next) => {
-    console.log('incoming data\nwho : ' + req.body.who + '\nmessage : ' + req.body.message);
+app.get('/login',(req,res,next) => {
+    console.log('incoming data\nwho : ' + req.query.who + '\nmessage : ' + req.query.message);
     res.sendFile(path.join(__dirname,'login.html'));
     next();
 });
